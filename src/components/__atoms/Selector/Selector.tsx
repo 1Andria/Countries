@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useDarkMode } from "../../Mode";
+import { useDarkMode } from "../../../Mode";
 
 function Selector() {
   const mode = useDarkMode((state) => state.mode);

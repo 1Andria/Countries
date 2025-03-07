@@ -1,5 +1,5 @@
 import { Moon } from "../../../Icons/moon";
-import { useDarkMode } from "../../Mode";
+import { useDarkMode } from "../../../Mode";
 
 function ModeBtn() {
   const mode = useDarkMode((state) => state.mode);

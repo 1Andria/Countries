@@ -1,5 +1,5 @@
 import { Loop } from "../../../Icons/loop";
-import { useDarkMode } from "../../Mode";
+import { useDarkMode } from "../../../Mode";
 
 function Input() {
   const mode = useDarkMode((state) => state.mode);

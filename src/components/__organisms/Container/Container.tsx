@@ -1,6 +1,6 @@
 import Header from "../../__molecules/Header/Header";
 import FindBar from "../../__molecules/FindBar/FindBar";
-import { useDarkMode } from "../../Mode";
+import { useDarkMode } from "../../../Mode";
 
 function Container() {
   const mode = useDarkMode((state) => state.mode);

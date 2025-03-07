@@ -1,5 +1,5 @@
+import { useDarkMode } from "../../../Mode";
 import ModeBtn from "../../__atoms/ModeBtn/ModeBtn";
-import { useDarkMode } from "../../Mode";
 
 function Header() {
   const mode = useDarkMode((state) => state.mode);
