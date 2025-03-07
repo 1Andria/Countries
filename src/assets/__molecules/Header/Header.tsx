@@ -1,16 +1,13 @@
 import ModeBtn from "../../__atoms/ModeBtn/ModeBtn";
+import { useDarkMode } from "../../Mode";
 
-type ModeTypes = {
-  SwitchMode: () => void;
-  DarkMode: boolean;
-};
-
-function Header({ SwitchMode, DarkMode }: ModeTypes) {
+function Header() {
+  const mode = useDarkMode((state) => state.mode);
   return (
     <>
       <div
         className={`w-full h-[80px] shadow-lg ${
-          DarkMode ? "bg-[#2B3844]" : "bg-white"
+          mode ? "bg-[#2B3844]" : "bg-white"
         }`}
       >
         <div
@@ -18,12 +15,12 @@ function Header({ SwitchMode, DarkMode }: ModeTypes) {
         >
           <h1
             className={`${
-              DarkMode ? "text-white" : "text-black"
+              mode ? "text-white" : "text-black"
             } text-[24px] font-extrabold `}
           >
             Where in the world?
           </h1>
-          <ModeBtn SwitchMode={SwitchMode} DarkMode={DarkMode} />
+          <ModeBtn />
         </div>
       </div>
     </>

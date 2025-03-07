@@ -1,20 +1,19 @@
 import { Moon } from "../../../Icons/moon";
+import { useDarkMode } from "../../Mode";
 
-type BtnTypes = {
-  SwitchMode: () => void;
-  DarkMode: boolean;
-};
+function ModeBtn() {
+  const mode = useDarkMode((state) => state.mode);
+  const change = useDarkMode((state) => state.change);
 
-function ModeBtn({ SwitchMode, DarkMode }: BtnTypes) {
   return (
     <>
-      <button onClick={SwitchMode} className="flex cursor-pointer">
+      <button onClick={change} className="flex cursor-pointer">
         <h3
           className={`text-[16px] font-semibold ${
-            DarkMode ? "text-white" : "text-black"
+            mode ? "text-white" : "text-black"
           } flex items-center gap-[5px]`}
         >
-          <Moon DarkMode={DarkMode} />
+          <Moon DarkMode={mode} />
           Dark Mode
         </h3>
       </button>

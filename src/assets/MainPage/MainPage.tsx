@@ -1,4 +1,4 @@
-import Container from "../../__organisms/Container/Container";
+import Container from "../__organisms/Container/Container";
 
 function MainPage() {
   return (

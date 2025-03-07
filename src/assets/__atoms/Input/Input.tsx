@@ -1,21 +1,20 @@
 import { Loop } from "../../../Icons/loop";
+import { useDarkMode } from "../../Mode";
 
-type InputTypes = {
-  DarkMode: boolean;
-};
-function Input({ DarkMode }: InputTypes) {
+function Input() {
+  const mode = useDarkMode((state) => state.mode);
   return (
     <>
       <div
         className={`shadow-lg max-w-[480px] w-full h-[56px] ${
-          DarkMode ? "bg-[#2B3844]" : "bg-white"
+          mode ? "bg-[#2B3844]" : "bg-white"
         } pl-[32px] pr-[32px] flex items-center gap-[24px] `}
       >
-        <Loop DarkMode={DarkMode} />
+        <Loop DarkMode={mode} />
         <input
           placeholder="Search for a country…"
           className={` focus:outline-none w-full text-[14px] font-normal ${
-            DarkMode ? "text-white" : "text-black"
+            mode ? "text-white" : "text-black"
           }`}
           type="text"
         />
