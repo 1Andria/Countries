@@ -1,8 +1,11 @@
 import { Loop } from "../../../Icons/loop";
-import { useDarkMode } from "../../../Mode";
+import { useDarkMode } from "../../../services/Mode";
+import { useSearchValue } from "../../../services/Search";
 
 function Input() {
   const mode = useDarkMode((state) => state.mode);
+  const inputValue = useSearchValue((state) => state.setValue);
+
   return (
     <>
       <div
@@ -12,6 +15,7 @@ function Input() {
       >
         <Loop DarkMode={mode} />
         <input
+          onChange={(e) => inputValue(e.currentTarget.value)}
           placeholder="Search for a country…"
           className={` focus:outline-none w-full text-[14px] font-normal ${
             mode ? "text-white" : "text-black"

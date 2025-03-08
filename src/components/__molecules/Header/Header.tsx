@@ -1,8 +1,9 @@
-import { useDarkMode } from "../../../Mode";
+import { useDarkMode } from "../../../services/Mode";
 import ModeBtn from "../../__atoms/ModeBtn/ModeBtn";
 
 function Header() {
   const mode = useDarkMode((state) => state.mode);
+
   return (
     <>
       <div
