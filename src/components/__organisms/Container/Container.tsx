@@ -11,6 +11,7 @@ import { useSelectorValue } from "../../../services/selectorValue";
 //   name: {
 //     common: string;
 //   };
+//   continents: string[];
 // };
 
 function Container() {
@@ -24,9 +25,15 @@ function Container() {
   const filteredData = world.filter((country) =>
     country.name.common.toLowerCase().includes(inputValue.toLocaleLowerCase())
   );
-  const europeFilter = world.filter((country) =>
-    country.continents.includes("Europe")
-  );
+
+  const RegionFilter =
+    SelectorValue !== ""
+      ? world.filter((country) =>
+          country.continents.some((continent) =>
+            continent.includes(SelectorValue)
+          )
+        )
+      : world;
 
   return (
     <>
@@ -39,6 +46,7 @@ function Container() {
         <FindBar />
         <div className="max-w-[1440px] mr-auto ml-auto w-full gap-[35px] h-auto flex flex-wrap justify-between pr-[80px] pl-[80px] pb-[40px]">
           {inputValue.length === 0 &&
+            !SelectorValue &&
             world.map((country, key) => {
               return <Countries key={key} country={country} />;
             })}
@@ -46,8 +54,9 @@ function Container() {
             filteredData.map((country, key) => {
               return <Countries key={key} country={country} />;
             })}
-          {SelectorValue === "Europe" &&
-            europeFilter.map((country, key) => {
+          {inputValue.length === 0 &&
+            SelectorValue &&
+            RegionFilter.map((country, key) => {
               return <Countries key={key} country={country} />;
             })}
         </div>

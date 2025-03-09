@@ -25,7 +25,7 @@ function Countries({ country }: CountryType) {
       <div
         className={`w-[264px] h-[336px] mt-[48px]  shadow-lg flex flex-col   ${
           mode ? "bg-[#2B3844]" : "bg-white"
-        } cursor-pointer `}
+        } cursor-pointer rounded-[5px] `}
       >
         <div className="w-[264px] h-[160px] rounded-t-[5px]">
           <img
@@ -65,7 +65,7 @@ function Countries({ country }: CountryType) {
                 mode ? "text-white" : "text-[#111517]"
               }`}
             >
-              Region: <span className="font-light"> {country.capital}</span>
+              Capital: <span className="font-light"> {country.capital}</span>
             </h4>
           </div>
         </div>

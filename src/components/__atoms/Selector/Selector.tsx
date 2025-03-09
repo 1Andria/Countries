@@ -1,20 +1,17 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useDarkMode } from "../../../services/Mode";
 import { useSelectorValue } from "../../../services/selectorValue";
-import { useState } from "react";
 
 function Selector() {
   const mode = useDarkMode((state) => state.mode);
+  const selValue = useSelectorValue((state) => state.selValue);
   const toAfrica = useSelectorValue((state) => state.setAfricaValue);
   const toAmerica = useSelectorValue((state) => state.setAmericaValue);
   const toAsia = useSelectorValue((state) => state.setAsiaValue);
   const toEurope = useSelectorValue((state) => state.setEuropeValue);
   const toOceania = useSelectorValue((state) => state.setOceaniaValue);
 
-  const [selectedRegion, setSelectedRegion] = useState("");
-
   const handleChange = (event: any) => {
-    setSelectedRegion(event.target.value);
     switch (event.target.value) {
       case "Africa":
         toAfrica();
@@ -53,7 +50,7 @@ function Selector() {
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
-            value={selectedRegion}
+            value={selValue}
             label="Filter by Region"
             onChange={handleChange}
             MenuProps={{
