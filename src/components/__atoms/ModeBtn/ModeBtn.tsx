@@ -7,13 +7,17 @@ function ModeBtn() {
 
   return (
     <>
-      <button onClick={change} className="flex cursor-pointer">
+      <button
+        onClick={change}
+        className="flex cursor-pointer items-center gap-[8px] "
+      >
+        <Moon DarkMode={mode} />
+
         <h3
           className={`text-[16px] font-semibold ${
             mode ? "text-white" : "text-black"
           } flex items-center gap-[5px]`}
         >
-          <Moon DarkMode={mode} />
           Dark Mode
         </h3>
       </button>

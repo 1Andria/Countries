@@ -1,10 +1,14 @@
 import axios from "axios";
+import { useWorldData } from "./World";
+import { Country } from "../components/__molecules/Countries/Countries";
 
-export async function FetchData(
-  setWorld: React.Dispatch<React.SetStateAction<never[]>>
-) {
+export async function FetchData() {
   try {
-    const countries = await axios.get("https://restcountries.com/v3.1/all");
-    setWorld(countries.data);
-  } catch (error) {}
+    const response = await axios.get<Country[]>(
+      "https://restcountries.com/v3.1/all"
+    );
+    useWorldData.getState().setWorld(response.data);
+  } catch (error) {
+    console.error("Error fetching countries:", error);
+  }
 }

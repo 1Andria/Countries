@@ -1,28 +1,47 @@
+import { useNavigate } from "react-router";
 import { useDarkMode } from "../../../services/Mode";
+import { useSearchValue } from "../../../services/Search";
 
 type CountryType = {
-  country: object & CountryInfo;
+  country: Country;
 };
 
-type CountryInfo = {
+export type Country = {
   flags: {
     png: string;
   };
   name: {
     common: string;
+    nativeName: object;
   };
   common: string;
   capital: string[];
   continents: string[];
   population: number;
+  region: string;
+  currencies: object;
+  subregion: string;
+  languages: object;
+  borders: string[];
+  cca3: string;
+  cca2: string;
 };
 
 function Countries({ country }: CountryType) {
   const mode = useDarkMode((state) => state.mode);
+  const navigation = useNavigate();
+  const emptyValue = useSearchValue((state) => state.emptyValue);
+  function navigate(countryName: string) {
+    navigation(`information/${countryName}`);
+    setTimeout(() => {
+      emptyValue();
+    }, 100);
+  }
 
   return (
     <>
       <div
+        onClick={() => navigate(country.name.common)}
         className={`w-[264px] h-[336px] mt-[48px]  shadow-lg flex flex-col   ${
           mode ? "bg-[#2B3844]" : "bg-white"
         } cursor-pointer rounded-[5px] `}

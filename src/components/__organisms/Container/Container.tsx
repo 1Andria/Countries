@@ -2,29 +2,24 @@ import Header from "../../__molecules/Header/Header";
 import FindBar from "../../__molecules/FindBar/FindBar";
 import { useDarkMode } from "../../../services/Mode";
 import Countries from "../../__molecules/Countries/Countries";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FetchData } from "../../../services/api";
 import { useSearchValue } from "../../../services/Search";
 import { useSelectorValue } from "../../../services/selectorValue";
-
-// type WorldType = {
-//   name: {
-//     common: string;
-//   };
-//   continents: string[];
-// };
+import { useWorldData } from "../../../services/World";
 
 function Container() {
   const mode = useDarkMode((state) => state.mode);
-  const [world, setWorld] = useState([]);
-  useEffect(() => {
-    FetchData(setWorld);
-  }, []);
+  const world = useWorldData((state) => state.world);
   const inputValue = useSearchValue((state) => state.value);
   const SelectorValue = useSelectorValue((state) => state.selValue);
   const filteredData = world.filter((country) =>
     country.name.common.toLowerCase().includes(inputValue.toLocaleLowerCase())
   );
+
+  useEffect(() => {
+    FetchData();
+  }, []);
 
   const RegionFilter =
     SelectorValue !== ""
