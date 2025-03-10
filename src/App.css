@@ -8,3 +8,16 @@
 *{
   font-family: nunito;
 }
+
+@theme {
+  --breakpoint-lg:1280px
+}
+@theme {
+  --breakpoint-xl:1020px
+}
+@theme {
+  --breakpoint-mm:730px
+}
+@theme {
+  --breakpoint-ss:475px
+}

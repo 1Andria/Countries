@@ -16,7 +16,7 @@ function ModeBtn() {
         <h3
           className={`text-[16px] font-semibold ${
             mode ? "text-white" : "text-black"
-          } flex items-center gap-[5px]`}
+          } flex items-center gap-[5px] max-mm:text-[14px]`}
         >
           Dark Mode
         </h3>

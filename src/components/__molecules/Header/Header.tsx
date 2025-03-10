@@ -19,13 +19,13 @@ function Header() {
         }`}
       >
         <div
-          className={`h-full mr-auto ml-auto max-w-[1440px] w-full flex justify-between items-center pl-[80px] pr-[80px]`}
+          className={`h-full mr-auto ml-auto max-w-[1440px] w-full flex justify-between items-center pl-[80px] pr-[80px] max-xl:pr-[50px] max-xl:pl-[50px] max-mm:pr-[16px] max-mm:pl-[16px]`}
         >
           <h1
             onClick={ToMain}
             className={`${
               mode ? "text-white" : "text-black"
-            } text-[24px] font-extrabold cursor-pointer `}
+            } text-[24px] font-extrabold cursor-pointer max-mm:text-[14px] `}
           >
             Where in the world?
           </h1>

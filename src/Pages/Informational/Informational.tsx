@@ -14,21 +14,20 @@ function Informational() {
   useEffect(() => {
     FetchData();
   }, []);
-  console.log(WorldInfo);
 
   const mode = useDarkMode((state) => state.mode);
-  const changeMode = useDarkMode((state) => state.change);
+  // const changeMode = useDarkMode((state) => state.change);
 
-  useEffect(() => {
-    FetchData();
-  }, []);
+  // useEffect(() => {
+  //   FetchData();
+  // }, []);
 
-  useEffect(() => {
-    const darked = localStorage.getItem("darked");
-    if (darked === "true") {
-      changeMode();
-    }
-  });
+  // useEffect(() => {
+  //   const darked = localStorage.getItem("darked");
+  //   if (darked === "true") {
+  //     changeMode();
+  //   }
+  // });
 
   useEffect(() => {
     localStorage.setItem("darked", JSON.stringify(mode));
@@ -38,14 +37,16 @@ function Informational() {
   return (
     <>
       <div
-        className={`w-full h-screen ${mode ? "bg-[#202c36]" : "bg-[#fafafa]"}`}
+        className={`w-full min-h-screen pb-[30px] ${
+          mode ? "bg-[#202c36]" : "bg-[#fafafa]"
+        }`}
       >
         <Header />
         <div
-          className={`max-w-[1440px] w-full mr-auto ml-auto mt-[80px] pr-[80px] pl-[80px] `}
+          className={`max-w-[1440px] w-full mr-auto ml-auto mt-[80px] pr-[80px] pl-[80px] max-xl:pr-[50px] max-xl:pl-[50px] max-mm:pr-[16px] max-mm:pl-[16px]`}
         >
           <ToBackBtn />
-          <div className="flex w-full h-auto justify-between mt-[80px]">
+          <div className="flex w-full max-xl:flex-col gap-[30px] h-auto justify-between mt-[80px]">
             <div className="max-w-[560px] max-h-[401px] w-full rounded-[10px]">
               <img
                 src={WorldData?.flags.png}
@@ -61,7 +62,7 @@ function Informational() {
               >
                 {WorldData?.name.common}
               </h1>
-              <div className="w-full flex justify-between mt-[23px]">
+              <div className="w-full max-ss:flex-col max-ss:gap-[50px] flex justify-between mt-[23px]">
                 <div className="flex flex-col gap-[8px]">
                   <h4
                     className={`font-semibold text-[16px] ${

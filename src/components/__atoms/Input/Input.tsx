@@ -4,6 +4,7 @@ import { useSearchValue } from "../../../services/Search";
 
 function Input() {
   const mode = useDarkMode((state) => state.mode);
+  const value = useSearchValue((state) => state.value);
   const inputValue = useSearchValue((state) => state.setValue);
 
   return (
@@ -15,6 +16,7 @@ function Input() {
       >
         <Loop DarkMode={mode} />
         <input
+          value={value}
           onChange={(e) => inputValue(e.currentTarget.value)}
           placeholder="Search for a country…"
           className={` focus:outline-none w-full text-[14px] font-normal ${

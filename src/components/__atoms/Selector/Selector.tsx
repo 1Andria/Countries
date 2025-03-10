@@ -1,6 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useDarkMode } from "../../../services/Mode";
 import { useSelectorValue } from "../../../services/selectorValue";
+import { useSearchValue } from "../../../services/Search";
 
 function Selector() {
   const mode = useDarkMode((state) => state.mode);
@@ -10,8 +11,10 @@ function Selector() {
   const toAsia = useSelectorValue((state) => state.setAsiaValue);
   const toEurope = useSelectorValue((state) => state.setEuropeValue);
   const toOceania = useSelectorValue((state) => state.setOceaniaValue);
+  const empty = useSearchValue((state) => state.emptyValue);
 
   const handleChange = (event: any) => {
+    empty();
     switch (event.target.value) {
       case "Africa":
         toAfrica();

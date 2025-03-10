@@ -1,7 +1,7 @@
 import Header from "../../__molecules/Header/Header";
 import FindBar from "../../__molecules/FindBar/FindBar";
-import { useDarkMode } from "../../../services/Mode";
 import Countries from "../../__molecules/Countries/Countries";
+import { useDarkMode } from "../../../services/Mode";
 import { useEffect } from "react";
 import { FetchData } from "../../../services/api";
 import { useSearchValue } from "../../../services/Search";
@@ -10,7 +10,7 @@ import { useWorldData } from "../../../services/World";
 
 function Container() {
   const mode = useDarkMode((state) => state.mode);
-  const changeMode = useDarkMode((state) => state.change);
+  // const changeMode = useDarkMode((state) => state.change);
   const world = useWorldData((state) => state.world);
   const inputValue = useSearchValue((state) => state.value);
   const SelectorValue = useSelectorValue((state) => state.selValue);
@@ -22,12 +22,12 @@ function Container() {
     FetchData();
   }, []);
 
-  useEffect(() => {
-    const darked = localStorage.getItem("darked");
-    if (darked === "true") {
-      changeMode();
-    }
-  });
+  // useEffect(() => {
+  //   const darked = localStorage.getItem("darked");
+  //   if (darked === "true") {
+  //     changeMode();
+  //   }
+  // });
 
   useEffect(() => {
     localStorage.setItem("darked", JSON.stringify(mode));
@@ -51,7 +51,7 @@ function Container() {
       >
         <Header />
         <FindBar />
-        <div className="max-w-[1440px] mr-auto ml-auto w-full gap-[35px] h-auto flex flex-wrap justify-between pr-[80px] pl-[80px] pb-[40px]">
+        <div className="max-w-[1440px] mr-auto ml-auto w-full gap-[74px] h-auto flex flex-wrap  pr-[80px] pl-[80px] max-xl:pr-[55px] max-xl:pl-[55px] pb-[40px] justify-start max-lg:justify-center ">
           {inputValue.length === 0 &&
             !SelectorValue &&
             world.map((country, key) => {
