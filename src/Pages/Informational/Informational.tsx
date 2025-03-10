@@ -25,8 +25,9 @@ function Informational() {
   }, []);
 
   const WorldData = WorldInfo.find((country) => country.name.common === name);
+  console.log("gela", WorldData?.population);
 
-  const numb = WorldData?.population;
+  const numb = Number(WorldData?.population);
   const options = { maximumFractionDigits: 2 };
   const formattedNumber = Intl.NumberFormat("en-US", options).format(numb);
 
@@ -101,7 +102,12 @@ function Informational() {
                     }`}
                   >
                     Capital:{" "}
-                    <span className="font-light">{WorldData?.capital}</span>
+                    {WorldData?.capital && (
+                      <span className="font-light">{WorldData?.capital}</span>
+                    )}
+                    {!WorldData?.capital && (
+                      <span className="font-light">Does not have capital</span>
+                    )}
                   </h4>
                 </div>
                 <div className="flex flex-col gap-[8px]">
