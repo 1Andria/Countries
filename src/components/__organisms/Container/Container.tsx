@@ -10,6 +10,7 @@ import { useWorldData } from "../../../services/World";
 
 function Container() {
   const mode = useDarkMode((state) => state.mode);
+  const changeMode = useDarkMode((state) => state.change);
   const world = useWorldData((state) => state.world);
   const inputValue = useSearchValue((state) => state.value);
   const SelectorValue = useSelectorValue((state) => state.selValue);
@@ -20,6 +21,17 @@ function Container() {
   useEffect(() => {
     FetchData();
   }, []);
+
+  useEffect(() => {
+    const darked = localStorage.getItem("darked");
+    if (darked === "true") {
+      changeMode();
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("darked", JSON.stringify(mode));
+  }, [mode]);
 
   const RegionFilter =
     SelectorValue !== ""

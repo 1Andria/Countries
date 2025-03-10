@@ -17,6 +17,22 @@ function Informational() {
   console.log(WorldInfo);
 
   const mode = useDarkMode((state) => state.mode);
+  const changeMode = useDarkMode((state) => state.change);
+
+  useEffect(() => {
+    FetchData();
+  }, []);
+
+  useEffect(() => {
+    const darked = localStorage.getItem("darked");
+    if (darked === "true") {
+      changeMode();
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("darked", JSON.stringify(mode));
+  }, [mode]);
 
   const WorldData = WorldInfo.find((country) => country.name.common === name);
   return (
