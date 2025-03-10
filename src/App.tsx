@@ -10,6 +10,14 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/information/:name" element={<Informational />} />
+          <Route
+            path="*"
+            element={
+              <h1 className="text-[30px] ml-[20px] mt-[20px]">
+                404 page not found
+              </h1>
+            }
+          />
         </Routes>
       </Router>
     </>

@@ -8,6 +8,10 @@ type DarkMode = {
 export const useDarkMode = create<DarkMode>((set) => ({
   mode: false,
   change: () => {
-    set((state) => ({ mode: !state.mode }));
+    set((state) => {
+      const newMode = !state.mode;
+      localStorage.setItem("darked", JSON.stringify(newMode));
+      return { mode: newMode };
+    });
   },
 }));

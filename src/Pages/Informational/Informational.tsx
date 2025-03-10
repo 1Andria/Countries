@@ -16,20 +16,19 @@ function Informational() {
   }, []);
 
   const mode = useDarkMode((state) => state.mode);
-  // const changeMode = useDarkMode((state) => state.change);
-
-  // useEffect(() => {
-  //   const darked = localStorage.getItem("darked");
-  //   if (darked === "true") {
-  //     changeMode();
-  //   }
-  // });
 
   useEffect(() => {
-    localStorage.setItem("darked", JSON.stringify(mode));
-  }, [mode]);
+    const darked = localStorage.getItem("darked");
+    if (darked === "true") {
+      useDarkMode.setState({ mode: true });
+    }
+  }, []);
 
   const WorldData = WorldInfo.find((country) => country.name.common === name);
+
+  const numb = WorldData?.population;
+  const options = { maximumFractionDigits: 2 };
+  const formattedNumber = Intl.NumberFormat("en-US", options).format(numb);
 
   return (
     <>
@@ -78,7 +77,7 @@ function Informational() {
                     }`}
                   >
                     Population:{" "}
-                    <span className="font-light">{WorldData?.population}</span>
+                    <span className="font-light">{formattedNumber}</span>
                   </h4>
                   <h4
                     className={`font-semibold text-[16px] ${

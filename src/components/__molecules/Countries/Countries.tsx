@@ -38,11 +38,15 @@ function Countries({ country }: CountryType) {
     }, 100);
   }
 
+  const num = country.population;
+  const options = { maximumFractionDigits: 2 };
+  const formattedNumber = Intl.NumberFormat("en-US", options).format(num);
+
   return (
     <>
       <div
         onClick={() => navigate(country.name.common)}
-        className={`w-[264px] h-[336px] mt-[48px]  shadow-lg flex flex-col   ${
+        className={`w-[264px] h-[336px]   shadow-lg flex flex-col   ${
           mode ? "bg-[#2B3844]" : "bg-white"
         } cursor-pointer rounded-[5px] `}
       >
@@ -68,8 +72,7 @@ function Countries({ country }: CountryType) {
                 mode ? "text-white" : "text-[#111517]"
               }`}
             >
-              Population:{" "}
-              <span className="font-light">{country.population}</span>
+              Population: <span className="font-light">{formattedNumber}</span>
             </h4>
             <h4
               className={`font-semibold text-[14px] ${

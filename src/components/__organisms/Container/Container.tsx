@@ -10,7 +10,6 @@ import { useWorldData } from "../../../services/World";
 
 function Container() {
   const mode = useDarkMode((state) => state.mode);
-  // const changeMode = useDarkMode((state) => state.change);
   const world = useWorldData((state) => state.world);
   const inputValue = useSearchValue((state) => state.value);
   const SelectorValue = useSelectorValue((state) => state.selValue);
@@ -22,16 +21,12 @@ function Container() {
     FetchData();
   }, []);
 
-  // useEffect(() => {
-  //   const darked = localStorage.getItem("darked");
-  //   if (darked === "true") {
-  //     changeMode();
-  //   }
-  // });
-
   useEffect(() => {
-    localStorage.setItem("darked", JSON.stringify(mode));
-  }, [mode]);
+    const darked = localStorage.getItem("darked");
+    if (darked === "true") {
+      useDarkMode.setState({ mode: true });
+    }
+  }, []);
 
   const RegionFilter =
     SelectorValue !== ""
@@ -51,7 +46,7 @@ function Container() {
       >
         <Header />
         <FindBar />
-        <div className="max-w-[1440px] mr-auto ml-auto w-full gap-[74px] h-auto flex flex-wrap  pr-[80px] pl-[80px] max-xl:pr-[55px] max-xl:pl-[55px] pb-[40px] justify-start max-lg:justify-center ">
+        <div className="max-w-[1440px] mr-auto ml-auto w-full gap-[74px] h-auto flex flex-wrap  pr-[80px] pl-[80px] max-xl:pr-[55px] max-xl:pl-[55px] pb-[40px] justify-start max-lg:justify-center mt-[48px] ">
           {inputValue.length === 0 &&
             !SelectorValue &&
             world.map((country, key) => {
