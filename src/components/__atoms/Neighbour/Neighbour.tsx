@@ -1,4 +1,4 @@
-// import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import { useDarkMode } from "../../../services/Mode";
 
 type NeighbourProps = {
@@ -7,14 +7,9 @@ type NeighbourProps = {
 const Neighbour = ({ name }: NeighbourProps) => {
   const mode = useDarkMode((state) => state.mode);
 
-  // const navigation = useNavigate();
-
-  // function navigate(countryName: string) {
-  //   navigation(`information/${countryName}`);
-  // }
   return (
-    <div
-      // onClick={() => navigate(name)}
+    <Link
+      to={`/information/${name}`}
       className={`w-auto h-auto pt-[7px] pl-[7px] pb-[7px] pr-[7px] flex justify-center items-center shadow-lg ${
         mode ? "bg-[#2B3844]" : "bg-[white]"
       }`}
@@ -26,7 +21,7 @@ const Neighbour = ({ name }: NeighbourProps) => {
       >
         {name}
       </h4>
-    </div>
+    </Link>
   );
 };
 
